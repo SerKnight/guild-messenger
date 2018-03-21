@@ -21,7 +21,6 @@ feature "Classroom delete", :js => true do
     expect(page).to_not have_content 'Classroom Name'
   end
 
-
   scenario "user cannot delete other user's classrooms" do
     logout(:user)
     another_user = FactoryGirl.create(:user)

@@ -13,6 +13,4 @@ class User < ApplicationRecord
   def can_delete?(classroom)
     self == classroom.user
   end
-
 end
-

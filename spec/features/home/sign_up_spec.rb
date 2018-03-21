@@ -30,5 +30,4 @@ feature "Sign Up", :devise do
     sign_up_with(Faker::Name.first_name, "test@example.com", "please123", "mismatch")
     expect(page).to have_content "Password confirmation doesn't match"
   end
-
 end

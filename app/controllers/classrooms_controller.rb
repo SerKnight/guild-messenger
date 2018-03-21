@@ -1,5 +1,11 @@
 class ClassroomsController < ApplicationController
   before_filter :find_classroom, only: [:show, :join_classroom, :destroy, :invite_user, :create_classroom_membership]
+  before_filter :get_messages, only: [:show]
+
+  def get_messages
+    @messages = @classroom.messages
+    @message  = current_user.messages.build
+  end
 
   def find_classroom
     id = params[:id] || params[:classroom_id]
@@ -8,7 +14,6 @@ class ClassroomsController < ApplicationController
 
   def index
     @classrooms = Classroom.all
-
     joined = current_user.memberships.pluck(:classroom_id)
     owned = current_user.classrooms.where(user_id: current_user.id).pluck(:id)
     @joined_classrooms = Classroom.where(id: joined + owned)
@@ -20,8 +25,6 @@ class ClassroomsController < ApplicationController
 
   def show
     create_classroom_membership(current_user)
-    @messages = @classroom.messages
-    @message  = current_user.messages.build
     members_ids = Membership.where(classroom_id: @classroom.id).pluck(:user_id).uniq << current_user.id
     @invitable_users = User.where.not(id: members_ids)
     @current_members = User.where(id: members_ids)
@@ -33,12 +36,6 @@ class ClassroomsController < ApplicationController
     ApplicationMailer.send_classroom_invite(user.id, @classroom.id).deliver_now
     flash[:notice] = "Successfully invited #{user.name}."
     redirect_to @classroom
-  end
-
-  def create_classroom_membership(user)
-    if !user.classrooms.include?(@classroom)
-      Membership.create!(classroom_id: @classroom.id, user_id: user.id)
-    end
   end
 
   def create
@@ -64,6 +61,12 @@ class ClassroomsController < ApplicationController
   end
 
   private
+
+  def create_classroom_membership(user)
+    if !user.classrooms.include?(@classroom)
+      Membership.create!(classroom_id: @classroom.id, user_id: user.id)
+    end
+  end
 
   def classroom_params
     params.require(:classroom).permit(:name, :description)
