@@ -1,17 +1,17 @@
 <div class="row">
-  <div class="col-lg-9 text-left">
-    <h2>Class Description</h2>
-    <h6><%= @classroom.description %></h6>
-  </div>
   <div class="col-lg-3">
     <div class='btn btn-default'>
       <%= link_to "Go Back", classrooms_path %>
     </div>
-
+    <hr>
     <span class='badge badge-primary classroom-name-title'>
       <%= @classroom.name %>
     </span>
   </div>  
+  <div class="col-lg-9 text-left">
+    <h2>Class Description</h2>
+    <h6><%= @classroom.description %></h6>
+  </div>
 </div>
 
 
