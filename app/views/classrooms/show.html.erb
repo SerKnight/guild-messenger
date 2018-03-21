@@ -22,7 +22,7 @@
 
           <% @messages.each do |message| %>
             <span data-sender-true=<%= current_user.id == message.user_id %>>
-              <%= render partial: 'messages/message', locals: {message_content: message.content, sender_name: message.user.name || 'deleted' }%>
+              <%= render partial: 'messages/message', locals: {message_content: message.content, sender_name: message.user ? message.user.name : 'deleted' }%>
             </span>
 
           <% end %>
