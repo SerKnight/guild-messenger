@@ -1,0 +1,132 @@
+@import "variables";
+
+.classroom-name-title, .classroom-message-block blockquote {
+  font-size: 15px;
+}
+
+.classroom-message-block {
+  height: 302px;
+  overflow-y: auto;
+  box-shadow: 1px 1px 2px #dddddd;
+  padding: 8px;
+  border-radius: 3px;
+}
+
+.empty-classroom-td {
+  text-align: center;
+}
+
+.classroom-message-empty-notice {
+  margin-top: 12px;
+}
+
+.classroom-create-form {
+	max-width: 500px;
+
+	.form-control {
+		margin-top: 10px;
+	}
+}
+
+
+.chatroom-container {
+	.chat-box {
+		width: 85%;
+		float: left;
+		padding: 10px;
+
+		#messages {
+			float: left;
+			padding: 30px;
+			width: 100%;
+			background: rgba(0,0,0,0.05);
+			border-radius: 20px 20px 0px 0px;
+			max-height: 550px;
+			overflow: scroll;
+			box-shadow: inset 0px 0px 29px 20px rgba(0, 0, 0, 0.05);
+		}
+		
+		.keyboard-container {
+			float: left;
+			width: 100%;
+			border-radius: 10px;
+
+			.message-input {
+				background-color: rgba(0, 0, 0, 0.03);
+				box-sizing: border-box;
+				height: 13%;
+				padding: 0 5px 5px;
+
+				.new_message {
+					border-top: 1px solid rgba(0,0,0,0.1);
+				}
+
+				#message_content {
+					width: 95%;
+					height: 40px;
+					margin: 2.5%;
+					border-radius: 10px;
+					border: 1px solid $brand-light-blue;
+				}
+			}
+		}
+
+		#messages-table {
+			.message {
+				position: relative;
+				float: left;
+				width: 98%;
+		    margin: 1%;
+				
+				.message-user {
+					float: left;
+					font-weight: bold;
+					margin-right: 10px;
+					margin-top: 7px;
+					text-decoration: underline;
+				}
+				.message-content {
+					background: #f2f4f6;
+					padding: 7.5px;
+					border-radius: 10px;
+					margin-left: 7.5px;
+			    float: left;
+				}
+			}
+
+			.self-message {
+				.message-content {
+					float: right;
+				}
+				.message-user {
+					display: none;
+				}
+			}
+		}
+	}
+	.user-box {
+		width: 15%;
+		float: left;
+
+		.user-content {
+			padding: 10px;
+		}
+	}
+}
+
+
+@media only screen and (max-width: 991px) {
+
+
+	.chatroom-container {
+		.chat-box {
+			width: 100%;
+			float: left;
+		}
+
+		.user-box {
+			width: 100%;
+			float: left;
+		}
+	}
+}

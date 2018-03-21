@@ -1,0 +1,36 @@
+# bundler state
+/.bundle
+/vendor/bundle/
+/vendor/ruby/
+
+/log/*
+/tmp/*
+
+# add /config/database.yml if it contains passwords
+# /config/database.yml
+
+.redcar/
+.sass-cache
+/config/config.yml
+/coverage.data
+/coverage/
+/db/*.javadb/
+/db/*.sqlite3
+/doc/api/
+/doc/app/
+/doc/features.html
+/doc/specs.html
+/public/cache
+/public/stylesheets/compiled
+/public/system/*
+/spec/tmp/*
+/cache
+/capybara*
+/capybara-*.html
+/gems
+/specifications
+rerun.txt
+pickle-email-*.html
+.zeus.sock
+
+.DS_Store

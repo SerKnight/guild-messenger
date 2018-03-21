@@ -1,0 +1,30 @@
+App.room = App.cable.subscriptions.create("ClassroomChannel", {
+
+  connected: function() {},
+  disconnected: function() {},
+  received: function(data) {
+
+    $('.classroom-message-empty-notice').remove()
+    if (data.html != null) {
+      $("[data-classroom='" + 'classroom-' + data.classroom_id + "']").append("<span data-sender-true=" + (data.sender_id == data.current_user_id) + ">"+data.html+"</span")
+
+      var box = $('#messages');
+      box.scrollTop(box.prop("scrollHeight"));
+    }
+  }
+});
+
+
+function submit_message() {
+  return $('#message_content').on('keydown', function(event) {
+    if (event.keyCode === 13){
+      if($('#message_content').val() != ""){
+        $('input').click();
+        event.target.value = "";
+        return event.preventDefault();
+      } else {
+        event.preventDefault();
+      }
+    }
+  });
+};

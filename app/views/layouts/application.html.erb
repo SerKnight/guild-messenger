@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Guild Messenger" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Guild Messenger" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'guild_icon.ico' %>
+    <%= render 'share/analytics' if  Rails.env.production? %>
+  </head>
+  
+  <body>
+    <%= render 'layouts/navigation' %>
+    <div id="main">
+      <div class='content-container'>
+        <div class='content-wrapper'>
+          <%= render 'layouts/flash_messages' %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

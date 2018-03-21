@@ -1,0 +1,8 @@
+<h3>Welcome</h3>
+<p>
+There are total
+<%= User.count %> registered <%= link_to 'users', users_path %> like you.
+Enjoy the talk!
+</p>
+<hr/>
+<%= link_to 'Get Started', classrooms_path, class: 'btn btn-outline-success btn-block' %>

@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-lg-9 text-left">
+    <h2>Class Description</h2>
+    <h6><%= @classroom.description %></h6>
+  </div>
+  <div class="col-lg-3">
+    <div class='btn btn-default'>
+      <%= link_to "Go Back", classrooms_path %>
+    </div>
+
+    <span class='badge badge-primary classroom-name-title'>
+      <%= @classroom.name %>
+    </span>
+  </div>  
+</div>
+
+
+
+<div class='chatroom-container'>
+  <div class='chat-box'>
+    <div id="messages" class="messages">
+      <div id="messages-table" class="messages-table" data-classroom=<%= "classroom-#{@classroom.id}" %> >
+        <% if @messages.any? %>
+
+          <% @messages.each do |message| %>
+            <span data-sender-true=<%= current_user.id == message.user_id %>>
+              <%= render partial: 'messages/message', locals: {message_content: message.content, sender_name: message.user.name }%>
+            </span>
+
+          <% end %>
+        <% else %>
+          <div class='alert alert-info classroom-message-empty-notice' role='alert'>
+            No conversations yet!
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class='keyboard-container'>
+      <div class='message-input'>
+        <%= form_for(@message, remote: true) do |f| %>
+          <%= f.text_field :content %>
+          <%= f.hidden_field :classroom_id, :value => @classroom.id %>
+          <%= f.submit 'Send', placeholder: 'Write message..', class: 'submit' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class='user-box'>
+    <div class='user-content'>
+
+      <h5>Joined</h5>
+      <% @current_members.each do |user| %>
+        <div class='badge badge-primary'>
+          <span><%= user.name %></span>
+        </div>
+      <% end %>
+      <hr>
+      <h5>Invite Others</h5>
+      <% @invitable_users.each do |user| %>
+        <a href="/invite/<%= @classroom.id %>/<%=user.id %>">
+          <div class='badge badge-default'>
+            <span>Invite <%= user.name %></span>
+          </div>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>

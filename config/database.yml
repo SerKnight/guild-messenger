@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: guild_messenger_development
+  pool: 5
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: guild_messenger_test
+  pool: 5
+  password:

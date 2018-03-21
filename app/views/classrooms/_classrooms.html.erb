@@ -1,0 +1,25 @@
+<% classrooms.each do |classroom| %>
+  <tr>
+    <td>
+      <%= classroom.name%>
+    </td>
+    <td><%= "#{classroom.description[0..25]}.." %></td>
+    
+    <td><%= format_time(classroom.created_at) %></td>
+
+    <td><%= classroom.user_name %></td>
+    <td>
+      <% if current_user.can_delete?(classroom) %>
+        <%= link_to 'Delete', classroom_path(classroom),
+          method: :delete,
+          class: 'btn btn-outline-danger btn-sm',
+          data: {confirm: 'Are you sure you want to delete this classroom?'} %>
+      <% end %>
+    </td>
+    <td>
+      <a href=<%= classroom_path(classroom) %>>
+        <div class='btn btn-primary'>Join classroom</div>
+      </a>
+    </td>
+  </tr>
+<% end %>

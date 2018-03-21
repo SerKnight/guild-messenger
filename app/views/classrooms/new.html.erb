@@ -1,0 +1,16 @@
+<h3>Create new classroom</h3>
+
+
+<div class="classroom-create-form">
+	<%= form_for @classroom do |f| %>
+	  <%= render 'share/form_errors', form: f.object %>
+	  <hr>
+	  <div class="form-group">
+	    <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Classroom Name" %>
+	    <%= f.text_area :description, class: 'form-control', placeholder: "What will be intended classroom discussion?", cols: 30 %>
+	  </div>
+
+	  <%= link_to 'Back', classrooms_path, class: 'btn btn-secondary' %>
+	  <%= f.submit 'Create', class: 'btn btn-primary' %>
+	<% end %>
+</div>

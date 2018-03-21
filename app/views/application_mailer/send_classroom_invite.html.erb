@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Guild Education's Classroom Messenger, <%= @user.name %></h1>
+    <p>
+      You have been invited to join the Classroom:
+    </p>
+    <p>
+      <strong><%= @classroom.name %>: </strong>
+      <i><%= @classroom.description %>.</i>
+    </p>
+    
+    <hr>
+    <p>
+      Just follow this link: <%= link_to @classroom.name, classroom_url(@classroom) %>.
+
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

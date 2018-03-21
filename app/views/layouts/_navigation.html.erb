@@ -1,0 +1,31 @@
+<div class="header-container">
+  <div class="items-container">
+    <%= link_to (image_tag asset_url('guild_logo.png')), root_path, class: 'navbar-logo' %>
+
+    <div class="nav-links-mobile-wrapper">
+      <% if current_user %>
+        <span class="nav-item <%= controller_name == 'classrooms' ? 'active-nav' : '' %>" ><%= link_to 'Classrooms', classrooms_path, class: 'nav-link' %></span>
+      <% end %>
+    
+      <% if user_signed_in? %>
+        <span class="nav-item"><%= link_to 'Account', edit_user_registration_path, class: 'nav-link' %></span>
+        <span class="nav-item"><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete', class: 'nav-link' %></span>
+        <span class='welcome-name'><%= "Welcome, #{current_user.name}" %></span>
+      <% else %>
+        <span class="nav-item"><%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %></span>
+        <span class="nav-item"><%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %></span>
+      <% end %>
+    </div>
+
+
+    <div class="menu-toggle-wrapper">
+      <div id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    
+</div>
+
