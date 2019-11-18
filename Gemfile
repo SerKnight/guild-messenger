@@ -31,7 +31,7 @@ end
 
 gem 'popper'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'bootstrap', '~> 4.0.0.alpha3.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
 
 group :development do
